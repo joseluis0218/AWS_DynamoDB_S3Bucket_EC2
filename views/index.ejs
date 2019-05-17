@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dashboard</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <h1>Lista de contactos</h1>
+      <center></center>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-9">
+        <input class="form-control" type="text" id="myInput"
+          placeholder="Escriba el nombre del contacto que desea buscar" />
+      </div>
+      <div class="form-group col-sm-3">
+        <a href="/registrar" class="btn btn-block btn-success">AÑADIR CONTACTO</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <% if (datos.length > 0) {%>
+    <% datos.forEach(function(dato){ %>
+
+    <div class="col-sm-3" style="margin-bottom:2%;">
+      <div class="card text-center filter">
+        <img src="https://s3.us-east-2.amazonaws.com/joseluis0218.tecsup.edu.pe/<%= dato.foto %>"
+          class="card-img-top rounded" alt="foto.jpg" height="180">
+        <div class="card-body">
+          <h4 class="card-title"><b><%= dato.nombre %> <%=dato.apellidos %></b></h4>
+          <label class=""><b>Correo</b></label>
+          <p class="card-text"><%= dato.correo %></p>
+          <label class=""><b>Fecha Nacimiento</b></label>
+          <p class="card-text"><%= dato.fecha_nac %></p>
+          <a href="/editar/<%= dato.id %>" class="btn btn-primary">Editar</a>
+          <form action="/eliminar/<%=dato.id%>/<%=dato.foto%>" method="POST">
+            <button type="button" class="btn btn-danger" data-toggle="modal"
+              data-target="#exampleModal<%=dato.id%>">Eliminar</button>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal<%=dato.id%>" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ALERTA</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ¿Estás seguro de eliminar este contacto?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <% }); %>
+    <% }else{%>
+    <h5>No se encontraron contactos. Registra uno !!</h5>
+    <% }%>
+
+  </div>
+
+  <script src="/javascripts/search.js"></script>
+</body>
+
+</html>

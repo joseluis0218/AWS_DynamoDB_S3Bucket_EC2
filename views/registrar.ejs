@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registrar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container-fluid" style="margin-top: 7%;">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-6">
+                        <h2>Registrar Contacto</h2>
+
+                        <form action="/registrar" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                              <label for="">Nombre</label>
+                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba el nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Apellidos</label>
+                                <input type="text" class="form-control" id="apellidos" name="apellidos"  placeholder="Escriba los apellidos" required>
+                              </div>
+                            <div class="form-group">
+                                <label for="">Correo</label>
+                                <input type="email" class="form-control" id="correo" name="correo"  placeholder="Escriba el correo" required>
+                              </div>
+                              <div class="form-group">
+                                <label for="">Fecha Nacimiento</label>
+                                <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" required>
+                              </div>
+                              <div class="form-group">
+                                <label for="">Foto</label>
+                                <input type="file" class="form-control-file" id="foto" name="foto" required>
+                              </div>
+                              <a class="btn btn-secondary" href="/" role="button">Cancelar</a>
+        
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                          </form>
+                </div>
+
+            </div>
+    </div>
+</body>
+</html>
