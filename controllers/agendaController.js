@@ -2,9 +2,9 @@ const AWS = require('aws-sdk');
 var uuid = require('uuid');
 
 
-const BUCKET_NAME = 'joseluis0218.tecsup.edu.pe';
-const IAM_USER_KEY = 'AKIAI2BHSXZ52HQEIXZA';
-const IAM_USER_SECRET = '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';
+const BUCKET_NAME = '*';
+const IAM_USER_KEY = '*';
+const IAM_USER_SECRET = '*';
 AWS.config.update({
     region: "us-east-2",
     accessKeyId: IAM_USER_KEY,
